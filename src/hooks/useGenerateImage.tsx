@@ -2,6 +2,14 @@ import axios from "axios";
 import { useState } from "react";
 import { useSessionStorage } from "usehooks-ts";
 
+const blobToBase64 = (blob: Blob) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+};
 const dataURLtoFile = (dataurl: string, filename: string): File => {
   const arr = dataurl.split(",");
   const mimeMatch = arr[0].match(/:(.*?);/);
@@ -26,15 +34,16 @@ const fetchGeneratedImage = async (
   try {
     setLoading(true);
     const formData = new FormData();
-    formData.append("userImage", dataURLtoFile(userImage, "userImage.png"));
-    productImages.forEach((img) => {
-      formData.append(`productImages`, img);
-    });
+    formData.append("user_pic", dataURLtoFile(userImage, "userImage.png"));
+    // productImages.forEach((img) => {
+    //   formData.append(`product_images`, img);
+    // });
+    formData.append(`product_images`, productImages[0]);
     const response = await axios.post("/api/gemini/generateImage", formData, {
       responseType: "blob",
     });
-    const imageUrl = URL.createObjectURL(response.data);
-    return imageUrl;
+    const base64String = await blobToBase64(response.data);
+    return base64String;
   } catch (e: unknown) {
     console.error(e);
   } finally {
@@ -51,12 +60,14 @@ const useGenerateImage = () => {
 
   const generateLook = async (productImages: string[]) => {
     if (!userImage) return;
-    const generatedImg = await fetchGeneratedImage(
+    setIsGeneratingImg(true);
+    const generatedUserImg = await fetchGeneratedImage(
       userImage,
       productImages,
       setIsGeneratingImg
     );
-    setGeneratedImage(generatedImg || "");
+    setIsGeneratingImg(false);
+    setGeneratedImage(generatedUserImg || "");
   };
 
   return {

@@ -6,7 +6,14 @@ interface VirtualTryOnProps {
   images: string[];
 }
 const VirtualTryOn: React.FC<VirtualTryOnProps> = ({ images }) => {
-  const { userImage, setUserImage, generateLook } = useGenerateImage();
+  const {
+    userImage,
+    setUserImage,
+    generatedImage,
+    isGeneratingImg,
+    removeUserImage,
+    generateLook,
+  } = useGenerateImage();
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const selectFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -16,7 +23,6 @@ const VirtualTryOn: React.FC<VirtualTryOnProps> = ({ images }) => {
       reader.onload = (e) => {
         // The result attribute contains the data as a URL representing the file's data as a base64 encoded string.
         const dataUrl = e.target!.result;
-        console.log(dataUrl);
         setUserImage(dataUrl as string);
       };
 
@@ -51,7 +57,15 @@ const VirtualTryOn: React.FC<VirtualTryOnProps> = ({ images }) => {
           </button>
         </>
       )}
-      {userImage && <ImageGrid generateUserLook={generateUserLook} />}
+      {userImage && (
+        <ImageGrid
+          generateUserLook={generateUserLook}
+          userImage={userImage}
+          generatedImage={generatedImage}
+          removeUserImage={removeUserImage}
+          isGeneratingImg={isGeneratingImg}
+        />
+      )}
     </div>
   );
 };

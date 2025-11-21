@@ -1,15 +1,21 @@
 import { LoaderCircle, X } from "lucide-react";
 import React from "react";
-import useGenerateImage from "../../hooks/useGenerateImage";
 interface ImageGridProps {
+  userImage: string;
+  isGeneratingImg: boolean;
+  generatedImage: string;
+  removeUserImage: () => void;
   generateUserLook: () => void;
 }
-const ImageGrid: React.FC<ImageGridProps> = ({ generateUserLook }) => {
-  const { userImage, removeUserImage, isGeneratingImg } = useGenerateImage();
-  const [generatedImage, setGeneratedImage] = React.useState<string>("");
+const ImageGrid: React.FC<ImageGridProps> = ({
+  generateUserLook,
+  userImage,
+  removeUserImage,
+  isGeneratingImg,
+  generatedImage,
+}) => {
   const removeImage = () => {
     removeUserImage();
-    setGeneratedImage("");
   };
   return (
     <div className="grid grid-cols-2 gap-2">

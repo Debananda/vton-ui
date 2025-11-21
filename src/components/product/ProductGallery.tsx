@@ -7,7 +7,6 @@ interface ProductGalleryProps {
 }
 const ProductGallery: React.FC<ProductGalleryProps> = ({ images }) => {
   const [selectedImage, setSelectedImage] = useState(0);
-  console.log(images);
   return (
     <div className="product-gallery">
       <div className="thumbnail-list">
