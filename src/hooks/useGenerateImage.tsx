@@ -39,10 +39,10 @@ const fetchGeneratedImage = async (
     //   formData.append(`product_images`, img);
     // });
     formData.append(`product_images`, productImages[0]);
-    const response = await axios.post("/api/gemini/generateImage", formData, {
+    const response = await axios.post("/api/gemini/generateImage1", formData, {
       responseType: "blob",
     });
-    const base64String = await blobToBase64(response.data);
+    const base64String = (await blobToBase64(response.data)) as string;
     return base64String;
   } catch (e: unknown) {
     console.error(e);
