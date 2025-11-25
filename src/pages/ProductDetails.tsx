@@ -6,11 +6,12 @@ import { ChevronRight } from "lucide-react";
 
 function ProductDetails() {
   const images = [
-    "https://www.altardstate.com/dw/image/v2/BDDX_PRD/on/demandware.static/-/Sites-as_catalog/default/dwdd66a795/image/001163_IKT300394-02_CREAM_00.JPG?sw=1498&sh=2000&q=98",
-    "https://www.altardstate.com/dw/image/v2/BDDX_PRD/on/demandware.static/-/Sites-as_catalog/default/dw7d456539/image/001163_IKT300394-02_CREAM_01.JPG?sw=1498&sh=2000&q=98",
-    "https://www.altardstate.com/dw/image/v2/BDDX_PRD/on/demandware.static/-/Sites-as_catalog/default/dw7d456539/image/001163_IKT300394-02_CREAM_02.JPG?sw=1498&sh=2000&q=98",
-    "https://www.altardstate.com/dw/image/v2/BDDX_PRD/on/demandware.static/-/Sites-as_catalog/default/dw7d456539/image/001163_IKT300394-02_CREAM_03.JPG?sw=1498&sh=2000&q=98",
-    "https://www.altardstate.com/dw/image/v2/BDDX_PRD/on/demandware.static/-/Sites-as_catalog/default/dw7d456539/image/001163_IKT300394-02_CREAM_04.JPG?sw=1498&sh=2000&q=98",
+    "https://redtape.com/cdn/shop/files/RLC0037M_1.jpg",
+    "https://www.altardstate.com/dw/image/v2/BDDX_PRD/on/demandware.static/-/Sites-as_catalog/default/dwdd66a795/image/001163_IKT300394-02_CREAM_00.JPG",
+    "https://www.altardstate.com/dw/image/v2/BDDX_PRD/on/demandware.static/-/Sites-as_catalog/default/dw7d456539/image/001163_IKT300394-02_CREAM_01.JPG",
+    "https://www.altardstate.com/dw/image/v2/BDDX_PRD/on/demandware.static/-/Sites-as_catalog/default/dw7d456539/image/001163_IKT300394-02_CREAM_02.JPG",
+    "https://www.altardstate.com/dw/image/v2/BDDX_PRD/on/demandware.static/-/Sites-as_catalog/default/dw7d456539/image/001163_IKT300394-02_CREAM_03.JPG",
+    "https://www.altardstate.com/dw/image/v2/BDDX_PRD/on/demandware.static/-/Sites-as_catalog/default/dw7d456539/image/001163_IKT300394-02_CREAM_04.JPG",
   ];
   return (
     <main className="bg-white text-gray-900 py-8">
